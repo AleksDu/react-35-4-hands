@@ -2,34 +2,37 @@ import { Component } from "react";
 import { v4 as uuid } from "uuid";
 
 export class Form extends Component {
-  propIdTitle = uuid();
-  prodIdDescription = uuid();
-  prodIdAgreed = uuid();
+  prodIdtitle = uuid();
+  prodIdDesc = uuid();
   prodIdSize = uuid();
+  prodIdokGoogle = uuid();
 
   state = {
     title: "",
     desc: "",
-    product: "null",
-    agreed: "false",
     size: "",
+
+    okGoogle: false,
+
+    product: null,
   };
 
   handleCheck = (e) => {
+    // console.log('value:', e.target.value); // нам не надо
     const { name, checked } = e.target;
-    const { agreed } = this.state;
+    const { okGoogle } = this.state;
     console.log("name:", name);
-    // console.log('value:', e.target.value)
     console.log("checked:", checked);
     this.setState({
-      agreed: !agreed,
+      okGoogle: !okGoogle,
     });
   };
 
   handleChange = (e) => {
     const { name, value } = e.target;
-    // console.log(e.target.name, e.te.target.valuearget.value)
-    this.setState({ [name]: value });
+    this.setState({
+      [name]: value,
+    });
   };
 
   handleChangeAllInputs = (e) => {
@@ -38,54 +41,54 @@ export class Form extends Component {
   };
 
   handleSubmit = (e) => {
+    e.preventDefault();
     const { title, desc, size } = this.state;
-
-    this.state.e.preventDefault();
     const product = {
-      title: title,
-      desc: desc,
-      size: size,
+      id: uuid(),
+      title,
+      description: desc,
+      size,
     };
     this.setState({ product });
-    this.props.addNewProduct(product);
+    this.props.addNewProduct(product); // !!!метод из App!!!
     this.resetForm();
   };
   resetForm = () => {
     this.setState({ ...this.state });
   };
+
   render() {
-    const { title, desc, size, agreed } = this.state;
+    const { title, desc, size, okGoogle } = this.state;
     const {
-      handleSubmit,
-      propIdTitle,
-      prodIdSize,
-      prodIdDescription,
       handleChangeAllInputs,
-      prodIdAgreed,
-      handleCheck,
+      handleSubmit,
+      prodIdtitle,
+      prodIdDesc,
+      prodIdSize,
+      prodIdokGoogle,
     } = this;
+
     return (
       <form onSubmit={handleSubmit}>
-        <label htmlFor={propIdTitle}>Title</label>
+        <label htmlFor={prodIdtitle}>Title</label>
         <input
-          id={propIdTitle}
+          type="text"
+          id={prodIdtitle}
           name="title"
           value={title}
-          type="text"
           onChange={handleChangeAllInputs}
         />
         <br />
-        <label htmlFor={prodIdDescription}>Description</label>
+        <label htmlFor={prodIdDesc}>Description</label>
         <input
-          id={prodIdDescription}
+          type="text"
+          id={prodIdDesc}
           name="desc"
           value={desc}
-          type="text"
           onChange={handleChangeAllInputs}
         />
-
         <br />
-        <label htmlFor={prodIdSize}>Choose you size</label>
+        <label htmlFor={prodIdSize}>Choose your size</label>
         <select
           name="size"
           value={size}
@@ -95,21 +98,21 @@ export class Form extends Component {
           <option value="" disabled>
             ...
           </option>
-          <option value="m">m</option>
           <option value="s">s</option>
+          <option value="m">m</option>
           <option value="l">l</option>
         </select>
         <br />
-        <label htmlFor={prodIdAgreed}>Agree?</label>
+        <label htmlFor={prodIdokGoogle}>Agree?</label>
         <input
           type="checkbox"
-          name="agreed"
-          id={prodIdAgreed}
-          checked={agreed}
+          name="okGoogle"
+          id={prodIdokGoogle}
+          checked={okGoogle}
           onChange={handleChangeAllInputs}
         />
-
-        <button type="submit" disabled={!agreed}>
+        <br />
+        <button type="submit" disabled={!okGoogle}>
           add
         </button>
       </form>

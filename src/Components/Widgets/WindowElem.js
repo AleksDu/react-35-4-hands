@@ -1,11 +1,13 @@
 import { Flipped } from "react-flip-toolkit";
 import PropTypes from "prop-types";
+
 export function GadgetWindow({
   unitRef,
   isOpen,
   toggleState,
   keydownHandler,
   handleClick,
+  handleDelete,
   textObj: { title, content, backBtn, deleteBtn },
 }) {
   return (
@@ -24,7 +26,7 @@ export function GadgetWindow({
         <button className="button secondary content" onClick={handleClick}>
           {backBtn}
         </button>
-        <button className="button primary content" onClick={handleClick}>
+        <button className="button primary content" onClick={handleDelete}>
           {deleteBtn}
         </button>
       </div>

@@ -23,8 +23,6 @@ export class DeleteButton extends Component {
   };
 
   keydownHandler = (event) => {
-    // при фокусе табом на кнопках виджета
-    // закрывает виджет по нажатию на 'Enter' || 'Escape'
     if (event.key === "Enter" || event.key === "Escape") {
       this.toggleState();
     }
@@ -32,20 +30,34 @@ export class DeleteButton extends Component {
 
   handleClick = () => this.setState({ isOpen: false });
 
+  // ===  Добавляем обработчик клика для кнопки Delete и вызываем полученный через пропс
+  // метод удаления продукта и передаем его же полученный id
+  handleDelete = () => {
+    this.props.onDelete(this.props.id);
+    this.setState({ isOpen: false });
+  };
+
   render() {
-    // деструктуризировать стейт и методы
     const { isOpen } = this.state;
-    const { ref, keydownHandler, toggleState, handleClick } = this;
+    const {
+      ref,
+      keydownHandler,
+      toggleState,
+      handleClick,
+      // деструктуризируем handleDelete
+      handleDelete,
+    } = this;
     return (
       <Flipper flipKey={isOpen} spring="stiff" stagger>
         {isOpen ? (
           <GadgetWindow
-            // переименовано имя пропа для передачи в компонент виджета ссылки на дом-узел
             unitRef={ref}
             isOpen={isOpen}
             toggleState={toggleState}
             keydownHandler={keydownHandler}
             handleClick={handleClick}
+            // === передаем обработчик клика для кнопки Delete
+            handleDelete={handleDelete}
             textObj={this.props.text}
           />
         ) : (
