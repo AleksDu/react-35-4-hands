@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-35-4-hands/static/css/main.fcef925d.chunk.css",
-    "main.js": "/react-35-4-hands/static/js/main.a7c02ad1.chunk.js",
-    "main.js.map": "/react-35-4-hands/static/js/main.a7c02ad1.chunk.js.map",
+    "main.js": "/react-35-4-hands/static/js/main.382a8447.chunk.js",
+    "main.js.map": "/react-35-4-hands/static/js/main.382a8447.chunk.js.map",
     "runtime-main.js": "/react-35-4-hands/static/js/runtime-main.6d3da8c5.js",
     "runtime-main.js.map": "/react-35-4-hands/static/js/runtime-main.6d3da8c5.js.map",
     "static/js/2.72fbd983.chunk.js": "/react-35-4-hands/static/js/2.72fbd983.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.6d3da8c5.js",
     "static/js/2.72fbd983.chunk.js",
     "static/css/main.fcef925d.chunk.css",
-    "static/js/main.a7c02ad1.chunk.js"
+    "static/js/main.382a8447.chunk.js"
   ]
 }
