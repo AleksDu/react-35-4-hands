@@ -109,6 +109,7 @@ class App extends Component {
     // console.log("RENDER METHOD");
     // console.log("state:", this.state.title, this.state.desc);
     const { searchValue, perPage, allProducts } = this.state;
+    console.log(searchValue, perPage);
     return (
       <div className="App">
         <SearchForm getSearchValues={this.getSearchValues} />

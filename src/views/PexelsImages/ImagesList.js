@@ -6,7 +6,7 @@ let api_key = `563492ad6f9170000100000188f3b8d3cd1047e392f28560cf9684bd`;
 const newPexelsFetchObject = new PexelsFetchObject(base_url, api_key);
 console.log(newPexelsFetchObject);
 
-export class ImagesList extends Component() {
+export class ImagesList extends Component {
   state = {
     searchResults: [],
     status: "init",
@@ -41,7 +41,7 @@ export class ImagesList extends Component() {
     newPexelsFetchObject.searchPhotos().then((searchResults) => {
       console.log(searchResults);
       this.setState((prev) => ({
-        searchResults: [...searchResults, ...searchResults],
+        searchResults: [...prev.searchResults, ...searchResults],
         status: "success",
       }));
     });

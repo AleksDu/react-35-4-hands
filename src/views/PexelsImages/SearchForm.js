@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-export class SearchForm extends Component() {
+export class SearchForm extends Component {
   state = {
     searchValue: "",
     perPage: 5,
