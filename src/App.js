@@ -3,16 +3,27 @@ import { Component } from "react";
 import { Form } from "./Components/Forms/Form";
 import { ProductList } from "./Components/Products/ProductList";
 import { Modal } from "./Components/Modal/Modal";
+import { ImagesList } from "./views/PexelsImages/ImagesList";
+import { SearchForm } from "./views/PexelsImages/SearchForm";
 
+// console.dir(axios)
 // import { DeleteButton } from './components/Widgets/RemoveItem';
 // import { Counter } from './components/Counter/Counter';
 
-// const text = {
-//   title: 'title-1',
-//   content: 'content-1',
-//   backBtn: 'go back',
-//   deleteBtn: 'delete',
-// };
+// let searchQuery = "banana";
+// let searchPage = 1;
+// let searchPerPage = 5;
+// let endPoint = 'search';
+// let params = `?query=${searchQuery}&page=${searchPage}&per_page=${searchPerPage }`;
+// let url = endPoint + params;
+
+// eslint-disable-next-line
+const text = {
+  title: "title-1",
+  content: "content-1",
+  backBtn: "go back",
+  deleteBtn: "delete",
+};
 
 class App extends Component {
   state = {
@@ -20,6 +31,8 @@ class App extends Component {
     isOpen: false,
     showModal: false,
     allProducts: [],
+    searchValue: "",
+    perPage: 5,
   };
 
   componentDidMount() {
@@ -40,6 +53,10 @@ class App extends Component {
     if (prevState.allProducts !== this.state.allProducts) {
       localStorage.setItem("products", JSON.stringify(this.state.allProducts));
     }
+
+    // if (prevState.searchValue !== this.state.searchValue) {
+    //   console.log('dd')
+    //   }
   }
 
   componentWillUnmount() {
@@ -83,11 +100,20 @@ class App extends Component {
   //   }));
   // };
 
+  // Module 3 Lesson 3
+
+  getSearchValues = (searchValue, perPage) =>
+    this.setState({ searchValue, perPage });
+
   render() {
-    console.log("RENDER METHOD");
+    // console.log("RENDER METHOD");
     // console.log("state:", this.state.title, this.state.desc);
+    const { searchValue, perPage, allProducts } = this.state;
     return (
       <div className="App">
+        <SearchForm getSearchValues={this.getSearchValues} />
+        <ImagesList searchValue={searchValue} perPage={perPage} />
+
         {this.state.showModal && (
           <Modal toggleModal={this.toggleModal}>
             <Form addNewProduct={this.addNewProduct} />
@@ -95,11 +121,10 @@ class App extends Component {
         )}
         <h1>FE-35 Product</h1>
         <button type="button" onClick={this.toggleModal}>
-          {" "}
           Add product
         </button>
         <ProductList
-          products={this.state.allProducts}
+          products={allProducts}
           onDeleteProduct={this.deleteProduct}
         />
       </div>
