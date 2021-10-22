@@ -16,7 +16,7 @@ export class SearchForm extends Component {
     console.log("before fetch", this.state.searchValue, this.state.perPage);
     //  this.setState = { searchValue: '' }
     this.props.getSearchValues(this.state.searchValue, this.state.perPage);
-    this.state({ searchValue: "", perPage: 5 });
+    this.setState({ searchValue: "", perPage: 5 });
   };
 
   render() {

@@ -58,18 +58,18 @@ export class ImagesList extends Component {
       return (
         <>
           <ul>
-            {this.state.searchResults.length.map((el) => (
+            {this.state.searchResults.map((el) => (
               <li key={el.id}>
                 <img src={el.src.tiny} alt={el.photographer} />
               </li>
             ))}
           </ul>
+          <button type="button" onClick={this.handleClick}>
+            Load more
+          </button>
         </>
       );
     }
-    <button type="button" onClick={this.handleClick}>
-      Load more
-    </button>;
 
     if (this.state.status === "error") {
       return <h1>Alarma!!!</h1>;
