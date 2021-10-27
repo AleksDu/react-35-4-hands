@@ -1,36 +1,63 @@
-import { Component } from "react";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import s from "./Modal.module.scss";
+// import { Component } from 'react';
 
-export class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener("keydown", this.handleEscape);
-  }
-  componentDidUpdate(prevProps, prevState) {}
-
-  componentWillUnmount() {
-    window.removeEventListener("keydown", this.handleEscape);
-  }
-
-  handleEscape = (e) => {
+export function Modal({ children, toggleModal }) {
+  useEffect(() => {
+    window.addEventListener("keydown", handleEscape);
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  });
+  const handleEscape = (e) => {
     let condition = e.code === "Escape";
     console.log(condition);
     if (condition) {
-      this.props.toggleModal();
+      toggleModal();
     }
   };
-  handleClose = (e) => {
+  const handleClose = (e) => {
     if (e.currentTarget === e.target) {
-      this.props.toggleModal();
+      toggleModal();
     }
   };
-  render() {
-    const { children } = this.props;
-    return createPortal(
-      <div className={s.backDrop} onClick={this.handleClose}>
-        <div className={s.content}>{children}</div>
-      </div>,
-      document.getElementById("modalRoot")
-    );
-  }
+  return createPortal(
+    <div className={s.backDrop} onClick={handleClose}>
+      <div className={s.content}>{children}</div>
+    </div>,
+    document.getElementById("modalRoot")
+  );
 }
+
+// export class Modal extends Component {
+//   componentDidMount() {
+//     window.addEventListener('keydown', this.handleEscape);
+//   }
+
+//   componentWillUnmount() {
+//     window.removeEventListener('keydown', this.handleEscape);
+//   }
+
+//   handleEscape = e => {
+//     let condition = e.code === 'Escape';
+//     console.log(condition);
+//     if (condition) {
+//       this.props.toggleModal();
+//     }
+//   };
+//   handleClose = e => {
+//     if (e.currentTarget === e.target) {
+//       this.props.toggleModal();
+//     }
+//   };
+//   render() {
+//     const { children } = this.props;
+//     return createPortal(
+//       <div className={s.backDrop} onClick={this.handleClose}>
+//         <div className={s.content}>{children}</div>
+//       </div>,
+//       document.getElementById('modalRoot'),
+//     );
+//   }
+// }

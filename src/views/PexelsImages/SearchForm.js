@@ -1,43 +1,45 @@
-import { Component } from "react";
+import { useState } from "react";
 
-export class SearchForm extends Component {
-  state = {
-    searchValue: "",
-    perPage: 5,
-  };
+export function SearchFrom({ getSearchValues }) {
+  const [searchValue, setSearchValue] = useState("");
+  const [perPage, setPerPage] = useState(5);
 
-  handleSearchChange = (e) => {
+  const handleSearchChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    switch (name) {
+      case "searchValue":
+        setSearchValue(value);
+        break;
+      case "perPage":
+        setPerPage(value);
+        break;
+      default:
+    }
   };
-
-  handleSearchSubmit = (e) => {
+  const handleSearchSubmit = (e) => {
     e.preventDefault();
-    console.log("before fetch", this.state.searchValue, this.state.perPage);
-    //  this.setState = { searchValue: '' }
-    this.props.getSearchValues(this.state.searchValue, this.state.perPage);
-    this.setState({ searchValue: "", perPage: 5 });
+    console.log("BEFORE FETCH", searchValue, perPage);
+    getSearchValues(searchValue, perPage);
+    setSearchValue("");
+    // setPerPage(2);
   };
-
-  render() {
-    return (
-      <form onSubmit={this.handleSearchSubmit}>
-        <input
-          type="text"
-          name="searchValue"
-          onChange={this.handleSearchChange}
-          value={this.state.searchValue}
-          placeholder="Value"
-        />
-        <input
-          type="number"
-          name="perPage"
-          onChange={this.handleSearchChange}
-          value={this.state.perPage}
-          placeholder="How many results"
-        />
-        <button type="submit">search</button>
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSearchSubmit}>
+      <input
+        type="text"
+        name="searchValue"
+        value={searchValue}
+        onChange={handleSearchChange}
+        placeholder="Value"
+      />
+      <input
+        type="number"
+        name="perPage"
+        value={perPage}
+        onChange={handleSearchChange}
+        placeholder="how many results?"
+      />
+      <button type="submit">search</button>
+    </form>
+  );
 }
