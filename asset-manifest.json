@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-35-4-hands/static/css/main.6e3c84b0.chunk.css",
-    "main.js": "/react-35-4-hands/static/js/main.0e286de3.chunk.js",
-    "main.js.map": "/react-35-4-hands/static/js/main.0e286de3.chunk.js.map",
+    "main.css": "/react-35-4-hands/static/css/main.7bcd76d1.chunk.css",
+    "main.js": "/react-35-4-hands/static/js/main.e99aa8e3.chunk.js",
+    "main.js.map": "/react-35-4-hands/static/js/main.e99aa8e3.chunk.js.map",
     "runtime-main.js": "/react-35-4-hands/static/js/runtime-main.6d3da8c5.js",
     "runtime-main.js.map": "/react-35-4-hands/static/js/runtime-main.6d3da8c5.js.map",
-    "static/js/2.8240054b.chunk.js": "/react-35-4-hands/static/js/2.8240054b.chunk.js",
-    "static/js/2.8240054b.chunk.js.map": "/react-35-4-hands/static/js/2.8240054b.chunk.js.map",
+    "static/js/2.991401ff.chunk.js": "/react-35-4-hands/static/js/2.991401ff.chunk.js",
+    "static/js/2.991401ff.chunk.js.map": "/react-35-4-hands/static/js/2.991401ff.chunk.js.map",
     "index.html": "/react-35-4-hands/index.html",
-    "static/css/main.6e3c84b0.chunk.css.map": "/react-35-4-hands/static/css/main.6e3c84b0.chunk.css.map",
-    "static/js/2.8240054b.chunk.js.LICENSE.txt": "/react-35-4-hands/static/js/2.8240054b.chunk.js.LICENSE.txt"
+    "static/css/main.7bcd76d1.chunk.css.map": "/react-35-4-hands/static/css/main.7bcd76d1.chunk.css.map",
+    "static/js/2.991401ff.chunk.js.LICENSE.txt": "/react-35-4-hands/static/js/2.991401ff.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6d3da8c5.js",
-    "static/js/2.8240054b.chunk.js",
-    "static/css/main.6e3c84b0.chunk.css",
-    "static/js/main.0e286de3.chunk.js"
+    "static/js/2.991401ff.chunk.js",
+    "static/css/main.7bcd76d1.chunk.css",
+    "static/js/main.e99aa8e3.chunk.js"
   ]
 }
