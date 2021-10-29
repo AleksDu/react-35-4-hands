@@ -1,16 +1,16 @@
 import { lazy, Suspense } from "react";
-
+import { Navigation } from "./Components/Navigation/Navigation";
 import "./App.css";
 import { NavLink, Route, Switch } from "react-router-dom";
 import { Loader } from "./Components/Loader/Loader";
 const HomePage = lazy(() =>
-  import("./pages/Home/Home" /* webpackChangName: Home Page   */)
+  import("./pages/Home/Home" /* webpackChangName: 'Home Page'   */)
 );
 const PexelsPage = lazy(() =>
-  import("./pages/Pexels/Pexels" /* webpackChangName: Pexels Page   */)
+  import("./pages/Pexels/Pexels" /* webpackChangName: 'Pexels Page '  */)
 );
 const ProductsPage = lazy(() =>
-  import("./pages/Products/Products" /* webpackChangName: Products Page   */)
+  import("./pages/Products/Products" /* webpackChangName:' Products Page'   */)
 );
 // import { SolidTitle } from './components/Titles/SolidTitle';
 function App() {
@@ -27,32 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <nav>
-        <li>
-          <NavLink
-            exact
-            to="/"
-            className="naVLink"
-            activeClassName="activeNavLink"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/pexels"
-            className="naVLink"
-            activeClassName="activeNavLink"
-          >
-            Pexels
-          </NavLink>
-          <NavLink
-            to="/products"
-            className="naVLink"
-            activeClassName="activeNavLink"
-          >
-            Products
-          </NavLink>
-        </li>
-      </nav>
+      <Navigation />
       <Suspense fallback={<Loader />}>
         <Switch>
           <Route exact path="/" component={HomePage} />
