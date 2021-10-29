@@ -28,3 +28,9 @@ body {
 ul {
   list-style: none;
 }
+.naVLink {
+  color: green;
+}
+.activeNavLink {
+  color: red;
+}
